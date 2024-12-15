@@ -27,8 +27,10 @@ import { HousingLocation } from '../housinglocation';
   filteredLocationList: HousingLocation[] = [];
 
   constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations()
-    this.filteredLocationList = this.housingLocationList;
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocation[]) => {
+      this.filteredLocationList = housingLocationList;
+      this.housingLocationList = housingLocationList;
+    })
   }
 
   filterResults(text: string) {
